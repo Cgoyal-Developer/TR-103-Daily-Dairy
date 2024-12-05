@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan Goyal - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;  
+            --light-color: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-nav li {
+            margin-left: 20px;
+        }
+
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        section {
+            background-color: white;
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--light-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+
+    /* Training Diary Section */
+    #training-diary {
+        background-color: white;
+        margin: 40px auto;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        width: 80%; /* Adjust the width to control the size */
+        max-width: 1200px;
+    }
+
+    /* Section Title */
+    #training-diary .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+    }
+
+    /* Week Buttons Container */
+    .weeks-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .week-btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .week-btn:hover {
+        background-color: var(--secondary-color);
+        transform: scale(1.05);
+    }
+
+    /* Days Containers */
+    .days-container {
+        display: none;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    /* Day Buttons */
+    .day-btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .day-btn:hover {
+        background-color: var(--secondary-color);
+        transform: scale(1.05);
+    }
+
+
+ /* Blog Cards Grid */
+    .blog-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* Individual Blog Cards */
+    .blog-card {
+        background-color: var(--light-color);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .blog-card h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .blog-card p {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .blog-card a {
+        text-decoration: none;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .blog-card a:hover {
+        background-color: var(--secondary-color);
+    }
+
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">Chandan Goyal</div>
+            <ul class="navbar-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Chandan Goyal</h1>
+            <p>Cybersecurity Enthusiast | Cloud Infrastructure Specialist | Software Developer</p>
+            <div class="social-icons">
+                <a href="mailto:smartchandan141@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/chandan-goyal-37079b273" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Cgoyal-Developer" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <p>I am a passionate Computer Science student specializing in Cybersecurity and Cloud Infrastructure. With a strong background in network security and software development, I am committed to creating innovative solutions that enhance digital security and user experience.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-laptop-code fa-3x" style="color: var(--primary-color);"></i>
+                <h3>Programming</h3>
+                <p>C, Python, SQL</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-server fa-3x" style="color: var(--primary-color);"></i>
+                <h3>Cloud Infrastructure</h3>
+                <p>AWS, EC2, S3, VPC</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-shield-alt fa-3x" style="color: var(--primary-color);"></i>
+                <h3>Cybersecurity</h3>
+                <p>Network Security, Penetration Testing</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-network-wired fa-3x" style="color: var(--primary-color);"></i>
+                <h3>Networking</h3>
+                <p>TCP/IP, DNS, DHCP</p>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Training Diary Section -->
+<section id="training-diary" class="container">
+    <h2 class="section-title">Training Diary</h2>
+
+    <div class="weeks-container">
+        <button class="week-btn" onclick="toggleDays('week1')">Week 1</button>
+        <button class="week-btn" onclick="toggleDays('week2')">Week 2</button>
+        <button class="week-btn" onclick="toggleDays('week3')">Week 3</button>
+        <button class="week-btn" onclick="toggleDays('week4')">Week 4</button>
+    </div>
+
+    <!-- Week 1 Days -->
+    <div class="days-container" id="week1">
+        <button class="day-btn" onclick="showPDF('Day-1.pdf')">Day 1</button>
+        <button class="day-btn" onclick="showPDF('Day-2.pdf')">Day 2</button>
+        <button class="day-btn" onclick="showPDF('Day-3.pdf')">Day 3</button>
+        <button class="day-btn" onclick="showPDF('Day-4.pdf')">Day 4</button>
+    </div>
+
+    <!-- Week 2 Days -->
+    <div class="days-container" id="week2">
+        <button class="day-btn" onclick="showPDF('Day-5.pdf')">Day 5</button>
+        <button class="day-btn" onclick="showPDF('Day-6.pdf')">Day 6</button>
+        <button class="day-btn" onclick="showPDF('Day-7.pdf')">Day 7</button>
+        <button class="day-btn" onclick="showPDF('Day-8.pdf')">Day 8</button>
+    </div>
+
+    <!-- Week 3 Days -->
+    <div class="days-container" id="week3">
+        <button class="day-btn" onclick="showPDF('Day-9.pdf')">Day 9</button>
+        <button class="day-btn" onclick="showPDF('Day-10.pdf')">Day 10</button>
+    </div>
+
+    <!-- Week 4 Days -->
+    <div class="days-container" id="week4">
+        <button class="day-btn" onclick="showPDF('Day-11.pdf')">Day 11</button>
+        <button class="day-btn" onclick="showPDF('Day-12.pdf')">Day 12</button>
+        <button class="day-btn" onclick="showPDF('Day-13.pdf')">Day 13</button>
+    </div>
+</section>
+
+<script>
+    function toggleDays(week) {
+        // Hide all weeks' days
+        const allWeeks = document.querySelectorAll('.days-container');
+        allWeeks.forEach(week => week.style.display = 'none');
+        
+        // Show the selected week's days
+        const selectedWeek = document.getElementById(week);
+        selectedWeek.style.display = 'flex';
+    }
+
+    function showPDF(day) {
+        // Open the selected day's PDF in a new tab
+        window.open(day, '_blank');
+    }
+</script>
+
+
+
+
+<!-- Blog Section -->
+<section id="blogs" class="container">
+    <h2 class="section-title">Blogs</h2>
+    <div class="blog-cards">
+        <div class="blog-card">
+            <h3>System Administration</h3>
+            <p>Learn about managing and maintaining computer systems efficiently.</p>
+            <a href="https://en.wikipedia.org/wiki/System_administration" target="_blank">Explore More</a>
+        </div>
+        <div class="blog-card">
+            <h3>Cloud Administration</h3>
+            <p>Explore cloud services and infrastructure deployment techniques.</p>
+            <a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank">Explore More</a>
+        </div>
+        <div class="blog-card">
+            <h3>Database Administration</h3>
+            <p>Understand how to manage database systems for high availability.</p>
+            <a href="https://en.wikipedia.org/wiki/Database_administration" target="_blank">Explore More</a>
+        </div>
+        <div class="blog-card">
+            <h3>Web Hosting</h3>
+            <p>Dive into the process of hosting websites and managing servers.</p>
+            <a href="https://en.wikipedia.org/wiki/Web_hosting_service" target="_blank">Explore More</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>SnapCraft Nexus</h3>
+                <p>A GUI tool for Linux software installation using Python and PyQt. Features intuitive interface, search functionality, and package management.</p>
+            </div>
+            <div class="project-card">
+                <h3>Advanced Firewall System</h3>
+                <p>Created a firewall with user authentication, internet usage monitoring, and access control features for enhanced network security.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Chandan Goyal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
